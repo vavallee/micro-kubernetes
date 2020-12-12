@@ -28,7 +28,6 @@ resource "digitalocean_droplet" "k8s1" {
       "echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab",
       "apt-get -y install tinyproxy net-tools",
       "sudo snap install microk8s --classic",
-      "echo "alias kubectl='microk8s kubectl'" >> ~/.bashrc;. ~/.bashrc"
       "kubectl config view --raw >~/.kube/config",
       "sudo microk8s.enable dns dashboard",
       "sudo microk8s.add-node"
