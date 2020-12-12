@@ -25,7 +25,8 @@ resource "digitalocean_droplet" "k8s2" {
       "sudo chmod 600 /swapfile",
       "sudo mkswap /swapfile",
       "sudo swapon /swapfile",
-      "echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab"
+      "echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab",
+      "sudo snap install microk8s --classic"
     ]
   }
 }
