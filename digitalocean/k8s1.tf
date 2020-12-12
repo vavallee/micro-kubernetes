@@ -30,6 +30,7 @@ resource "digitalocean_droplet" "k8s1" {
       "sudo snap install microk8s --classic",
       "kubectl config view --raw >~/.kube/config",
       "sudo microk8s.enable dns dashboard",
+      "microk8s enable helm3",
       "sudo microk8s.add-node"
    
     ]
