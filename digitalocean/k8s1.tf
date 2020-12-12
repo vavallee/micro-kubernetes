@@ -31,7 +31,6 @@ resource "digitalocean_droplet" "k8s1" {
       "echo "alias kubectl='microk8s kubectl'" >> ~/.bashrc;. ~/.bashrc"
       "kubectl config view --raw >~/.kube/config",
       "sudo microk8s.enable dns dashboard",
-      "
       "sudo microk8s.add-node"
    
     ]
