@@ -17,7 +17,6 @@ resource "digitalocean_droplet" "k8s2" {
   provisioner "remote-exec" {
     inline = [
       "export PATH=$PATH:/usr/bin",
-      # install nginx
       "export PATH=$PATH:/usr/bin",
       "sudo apt-get update",
       "sudo apt-get -y upgrade",
@@ -28,8 +27,8 @@ resource "digitalocean_droplet" "k8s2" {
       "sudo swapon /swapfile",
       "echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab",
       "sudo snap install microk8s --classic",
-      "echo "alias kubectl='microk8s kubectl'" >> ~/.bashrc;. ~/.bashrc"
-      "kubectl config view --raw >~/.kube/config",
+      "echo "alias kubectl='microk8s kubectl' >> ~/.bashrc;. ~/.bashrc"",
+      "kubectl config view --raw >~/.kube/config"
     ]
   }
 }
