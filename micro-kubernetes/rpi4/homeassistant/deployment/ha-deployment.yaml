@@ -193,6 +193,15 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 10
+        command:
+          - bash
+          - -ec
+          - |
+            echo "getting HA configs from GIT"
+            cd /tmp
+            git clone https://github.com/vavallee/micro-kubernetes.git
+            echo "moving configs to /config"
+            cp -R /tmp/micro-kubernetes/homeassistant /config
         resources: {}
         securityContext:
           runAsUser: 0
