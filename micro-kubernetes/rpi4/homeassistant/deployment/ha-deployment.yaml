@@ -202,6 +202,7 @@ spec:
             git clone https://github.com/vavallee/micro-kubernetes.git
             echo "moving configs to /config"
             cp -R /tmp/micro-kubernetes/homeassistant /config
+            python3 -m homeassistant --config /config
         resources: {}
         securityContext:
           runAsUser: 0
