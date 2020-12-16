@@ -54,11 +54,11 @@ spec:
           - |
             echo "getting HA configs from GIT"
             cd /tmp
-            #git clone https://github.com/vavallee/micro-kubernetes.git
+            git clone https://github.com/vavallee/micro-kubernetes.git
             # Remote Repo looks good
-            git clone https://github.com/bjw-s/hass-config.git
+            #git clone https://github.com/bjw-s/hass-config.git
             echo "moving configs to /config"
-            cp -R /tmp/hass-config/* /config
+            cp -R  /tmp/micro-kubernetes/homeassistant/* /config
             python3 -m homeassistant --config /config
         resources: {}
         securityContext:
