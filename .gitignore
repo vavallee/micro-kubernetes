@@ -8,6 +8,8 @@
 # Crash log files
 crash.log
 # Home Assistant Secrets
+#
+values.yaml
 secrets.yaml
 # HA Stuff
 home-assistant.log
