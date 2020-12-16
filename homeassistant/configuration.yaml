@@ -1,0 +1,40 @@
+homeassistant:
+  name: Olivet
+  latitude: !secret latitude
+  longitude: !secret longitude
+  unit_system: metric
+  time_zone: !secret time_zone
+  external_url: !secret external_url
+default_config:
+tts:
+  - platform: google_translate
+sensor:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    forecast:
+      - 0
+      - 1
+      - 2
+    hourly_forecast:
+      - 0
+      - 1
+    monitored_conditions:
+      - summary
+      - temperature
+      - humidity
+      - wind_speed
+      - wind_gust
+      - pressure
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+logger:
+  default: info
+  logs:
+    homeassistant.components.http.ban: warning
+influxdb:
+  host: 192.168.1.4
+speedtestdotnet:
+  server_id: 21275
