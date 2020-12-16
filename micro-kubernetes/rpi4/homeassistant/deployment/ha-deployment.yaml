@@ -212,7 +212,7 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-        - mountPath: /config/secrets.yaml
+        - mountPath: /c/secrets.yaml
           subPath: secrets.yaml
           name: ha-secrets
       dnsPolicy: ClusterFirst
@@ -225,11 +225,8 @@ spec:
         persistentVolumeClaim:
           claimName: ha-home-assistant
       - name: ha-secrets
-        secret:
-          secretName: ha-secrets
-          items:
-            - key: secrets.yaml
-              path: secrets.yaml
+        configMap:
+          name: ha-secrets
 status:
   availableReplicas: 1
   conditions:
