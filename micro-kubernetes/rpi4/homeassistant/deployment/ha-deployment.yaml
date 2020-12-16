@@ -194,9 +194,6 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 10
-        envFrom:
-          - secretRef:
-              name: ha-secrets
         command:
           - bash
           - -ec
@@ -215,6 +212,9 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
+        - mountPath: /config/secrets.yaml
+          subPath: secrets.yaml
+          name: ha-secrets
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -224,6 +224,12 @@ spec:
       - name: config
         persistentVolumeClaim:
           claimName: ha-home-assistant
+      - name: ha-secrets
+        secret:
+          secretName: ha-secrets
+          items:
+            - key: secrets.yaml
+              path: secrets.yaml
 status:
   availableReplicas: 1
   conditions:
