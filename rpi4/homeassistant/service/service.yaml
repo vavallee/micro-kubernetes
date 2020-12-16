@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: ha
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2020-12-16T01:07:03Z"
+  labels:
+    app.kubernetes.io/instance: ha
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: home-assistant
+    helm.sh/chart: home-assistant-4.0.0
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:meta.helm.sh/release-name: {}
+          f:meta.helm.sh/release-namespace: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:app.kubernetes.io/name: {}
+          f:helm.sh/chart: {}
+      f:spec:
+        f:externalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":8123,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/name: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2020-12-16T01:07:03Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: controller
+    operation: Update
+    time: "2020-12-16T01:07:03Z"
+  name: ha-home-assistant
+  namespace: default
+  resourceVersion: "17146"
+  selfLink: /api/v1/namespaces/default/services/ha-home-assistant
+  uid: 392ee611-bcca-4037-8c09-89c9f83a1c8b
+spec:
+  clusterIP: 10.152.183.86
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: api
+    nodePort: 32054
+    port: 8123
+    protocol: TCP
+    targetPort: 8123
+  selector:
+    app.kubernetes.io/instance: ha
+    app.kubernetes.io/name: home-assistant
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.1.152
