@@ -1,16 +1,16 @@
 homeassistant:
   name: Olivet
-  latitude: !secret latitude
-  longitude: !secret longitude
+  latitude: !env_var latitude
+  longitude: !env_var longitude
   unit_system: metric
-  time_zone: !secret time_zone
-  external_url: !secret external_url
+  time_zone: !env_var time_zone
+  external_url: !env_var external_url
 default_config:
 tts:
   - platform: google_translate
 sensor:
   - platform: darksky
-    api_key: !secret darksky_api_key
+    api_key: !env_var darksky_api_key
     forecast:
       - 0
       - 1
