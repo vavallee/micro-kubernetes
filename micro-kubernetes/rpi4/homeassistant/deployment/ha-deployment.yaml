@@ -203,6 +203,7 @@ spec:
             git clone https://github.com/vavallee/micro-kubernetes.git
             echo "moving configs to /config"
             cp -R /tmp/micro-kubernetes/homeassistant/* /config
+            ln -s /secrets/secrets.yaml /config/secrets.yaml
             python3 -m homeassistant --config /config
         resources: {}
         securityContext:
@@ -212,8 +213,7 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-        - mountPath: /c/secrets.yaml
-          subPath: secrets.yaml
+        - mountPath: /secrets
           name: ha-secrets
       dnsPolicy: ClusterFirst
       restartPolicy: Always
