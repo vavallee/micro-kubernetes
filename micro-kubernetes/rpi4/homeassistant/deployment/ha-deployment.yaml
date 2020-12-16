@@ -213,8 +213,6 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-        - mountPath: /secrets
-          name: ha-secrets
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -224,9 +222,6 @@ spec:
       - name: config
         persistentVolumeClaim:
           claimName: ha-home-assistant
-      - name: ha-secrets
-        configMap:
-          name: ha-secrets
 status:
   availableReplicas: 1
   conditions:
