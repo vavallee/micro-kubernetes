@@ -1,5 +1,0 @@
----
-alarm_bernd_snoozecount:
-  minimum: 0
-  maximum: 5
-  step: 1
