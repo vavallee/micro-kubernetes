@@ -1,0 +1,5 @@
+kubectl create secret generic nginx-config --from-file=default.conf
+kubectl create secret generic nginx-certs --from-file=privkey.pem --from-file=fullchain.pem --from-file=options-ssl-nginx.conf --from-file=ssl-dhparams.pem
+
+# use ha to get certbot --nginx certs with temporary config or use dns
+
