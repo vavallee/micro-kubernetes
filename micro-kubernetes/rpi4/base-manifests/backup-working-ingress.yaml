@@ -1,0 +1,44 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ha-home-assistant.ingress.kubernetes.io/enable-cors: "true"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"ha-home-assistant.ingress.kubernetes.io/enable-cors":"true","kubernetes.io/tls-acme":"true"},"labels":{"app":"ingress"},"name":"all-ingress","namespace":"default"},"spec":{"defaultBackend":{"service":{"name":"ha-home-assistant","port":{"number":443}}},"rules":[{"http":{"paths":[{"backend":{"service":{"name":"cm-acme-http-solver-gc9kj","port":{"number":8089}}},"path":"/.well-known","pathType":"Prefix"},{"backend":{"service":{"name":"ha-home-assistant","port":{"number":80}}},"path":"/","pathType":"Prefix"}]}}],"tls":[{"hosts":["olivet.autonomy.ninja"],"secretName":"letsencrypt-production"}]}}
+    kubernetes.io/tls-acme: "true"
+  labels:
+    app: ingress
+  name: all-ingress
+  namespace: default
+spec:
+  defaultBackend:
+    service:
+      name: ha-home-assistant
+      port:
+        number: 443
+  ingressClassName: public
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: cm-acme-http-solver-gc9kj
+            port:
+              number: 8089
+        path: /.well-known
+        pathType: Prefix
+      - backend:
+          service:
+            name: ha-home-assistant
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - olivet.autonomy.ninja
+    secretName: letsencrypt-production
+status:
+  loadBalancer:
+    ingress:
+    - ip: 127.0.0.1
